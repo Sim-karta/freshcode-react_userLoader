@@ -1,6 +1,7 @@
 import { Component } from "react";
 import getUsers from "../../shared/api";
 import UserCard from "../../entities/UserCard/UserCard";
+import styles from "./UserLoader.module.scss";
 
 class UsersLoader extends Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class UsersLoader extends Component {
         const { currentPage } = this.state;
 
         this.setState({ isFetching: true });
-        getUsers({ page: currentPage, results: 5 })
+        getUsers({ page: currentPage, results: 8 })
             .then((data) => this.setState({ users: data.results }))
             .catch((e) => this.setState({ error: e }))
             .finally(() => this.setState({ isFetching: false }));
@@ -56,14 +57,15 @@ class UsersLoader extends Component {
                 {error && <div>!!!ERROR!!! {JSON.stringify(error)}</div>}
                 {isFetching && <div>Loading. Please waite...</div>}
                 {!error && !isFetching && (
-                    <>
-                        <button onClick={this.prevPage}>{"<"}</button>
-                        <button onClick={this.nextPage}>{">"}</button>
-                        <ul>
+                    <div className={styles.userLoader}>
+                        <div className={styles.navigation}>
+                            <button onClick={this.prevPage}>{"<"}</button>
+                            <button onClick={this.nextPage}>{">"}</button>
+                        </div>
+                        <ul className={styles.userList}>
                             {users.map((u) => (
-                                <li>
+                                <li key={u.login.uuid}>
                                     <UserCard
-                                        key={u.login.uuid}
                                         name={`${u.name.first} ${u.name.last}`}
                                         gender={u.gender}
                                         username={u.login.username}
@@ -75,7 +77,7 @@ class UsersLoader extends Component {
                                 </li>
                             ))}
                         </ul>
-                    </>
+                    </div>
                 )}
             </>
         );

@@ -1,0 +1,160 @@
+/**
+  Блочна модель
+ */
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+/**
+  Прибираємо внутрішні відступи зліва для списків
+ */
+:where(ul, ol):where([class]) {
+    padding-left: 0;
+}
+
+/**
+  Прибираємо зовнішні відступи для body, цитат, підписів та групи полів форми
+ */
+body,
+:where(blockquote, figure, fieldset):where([class]) {
+    margin: 0;
+}
+
+/**
+  Прибираємо зовнішні вертикальні відступи потрібним тегам,
+ */
+:where(h1, h2, h3, h4, h5, h6, p, ul, ol, dl):where([class]) {
+    margin-block: 0;
+}
+
+:where(dd[class]) {
+    margin-left: 0;
+}
+
+:where(fieldset[class]) {
+    padding: 0;
+    border: none;
+}
+
+/**
+  Прибираємо стандартний маркер списку
+ */
+:where(ul[class]) {
+    list-style: none;
+}
+
+:where(address[class]) {
+    font-style: normal;
+}
+
+/**
+  Прибираємо зовнішні вертикальні відступи,
+  створюємо локальну змінну для зовнішнього відступу вниз,
+ */
+p {
+    --paragraphMarginBottom: 24px;
+
+    margin-block: 0;
+}
+
+/**
+  Робимо зовнішній відступ вниз для не останнього параграфа без класу
+ */
+p:where(:not([class]):not(:last-child)) {
+    margin-bottom: var(--paragraphMarginBottom);
+}
+
+/**
+  Нормалізуємо зображення та відео
+ */
+img,
+video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/**
+  Успадковуємо шрифт для потрібних тегів
+ */
+input,
+textarea,
+select,
+button {
+    font: inherit;
+}
+
+html {
+    height: 100%;
+    /**
+    Налаштування скролбару та скролу
+   */
+    scrollbar-gutter: stable;
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100%;
+    line-height: 1.5;
+}
+
+/**
+  Нормалізація розмірів посилання
+ */
+a:where([class]) {
+    display: inline-flex;
+}
+
+/**
+  Курсор-палець при наведенні
+ */
+button,
+label {
+    cursor: pointer;
+}
+
+/**
+  Прибрає сіре підсвічування при тапі на мобільних пристроях
+ */
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/**
+  Приодимо до єдиного кольору svg-елементи
+ */
+:where([fill]:not([fill="none"], [fill^="url"])) {
+    fill: currentColor;
+}
+
+:where([stroke]:not([stroke="none"], [stroke^="url"])) {
+    stroke: currentColor;
+}
+
+svg * {
+    transition-property: fill, stroke;
+}
+
+/**
+  Приведення рамок таблиць у класичний 'collapse' вигляд
+ */
+:where(table) {
+    border-collapse: collapse;
+    border-color: currentColor;
+}
+
+/**
+  Прибираємо аніміації для тих хто їх не використовує
+ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
