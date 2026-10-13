@@ -1,5 +1,6 @@
 import { Component } from "react";
 import getUsers from "../../shared/api";
+import UserCard from "../../entities/UserCard/UserCard";
 
 class UsersLoader extends Component {
     constructor(props) {
@@ -60,7 +61,18 @@ class UsersLoader extends Component {
                         <button onClick={this.nextPage}>{">"}</button>
                         <ul>
                             {users.map((u) => (
-                                <li key={u.login.uuid}>{JSON.stringify(u)}</li>
+                                <li>
+                                    <UserCard
+                                        key={u.login.uuid}
+                                        name={`${u.name.first} ${u.name.last}`}
+                                        gender={u.gender}
+                                        username={u.login.username}
+                                        country={u.country}
+                                        email={u.email}
+                                        phone={u.phone}
+                                        img={u.picture.large}
+                                    />
+                                </li>
                             ))}
                         </ul>
                     </>
