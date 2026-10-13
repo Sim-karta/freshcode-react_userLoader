@@ -7,13 +7,22 @@ class UserCard extends Component {
         const { name, gender, username, country, img, email, phone } =
             this.props;
 
+        let nameColorStyle;
+        if (gender === "male") {
+            nameColorStyle = styles.isMale;
+        } else if (gender === "female") {
+            nameColorStyle = styles.isFemale;
+        }
+
         return (
             <article className={styles.card}>
                 <img className={styles.image} src={img} alt={name} />
                 <div className={styles.header}>
                     <div className={styles.title}>
-                        <h2 className={styles.name}>{name}</h2>
-                        <p className={styles.username}>{username}</p>
+                        <h2 className={`${styles.name} ${nameColorStyle}`}>
+                            {name}
+                        </h2>
+                        <p className={styles.username}>@{username}</p>
                     </div>
                 </div>
                 <div className={styles.contacts}>

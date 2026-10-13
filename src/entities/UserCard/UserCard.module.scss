@@ -1,0 +1,64 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-light);
+    border-radius: 10px;
+    margin-top: calc(100px - 1rem);
+
+    .image {
+        position: absolute;
+        top: calc(-100px + 1rem);
+        height: 200px;
+        object-fit: cover;
+        border: 5px solid var(--color-light);
+        border-radius: 50%;
+    }
+
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: calc(100px + 1rem);
+
+        .title {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .name {
+                &.isMale {
+                    color: #44a7c2;
+                }
+
+                &.isFemale {
+                    color: #bf41b5;
+                }
+            }
+
+            .username {
+                font-style: italic;
+            }
+        }
+    }
+
+    .contacts {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        padding: 2rem 1rem;
+
+        .email,
+        .phone {
+            color: inherit;
+            transition-duration: 0.2s;
+
+            &:hover {
+                color: #93afcf;
+            }
+        }
+    }
+}

@@ -61,9 +61,8 @@ class UsersLoader extends Component {
                         <button onClick={this.nextPage}>{">"}</button>
                         <ul>
                             {users.map((u) => (
-                                <li>
+                                <li key={u.login.uuid}>
                                     <UserCard
-                                        key={u.login.uuid}
                                         name={`${u.name.first} ${u.name.last}`}
                                         gender={u.gender}
                                         username={u.login.username}
