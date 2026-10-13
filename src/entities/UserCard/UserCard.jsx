@@ -9,20 +9,20 @@ class UserCard extends Component {
 
         return (
             <article className={styles.card}>
+                <img className={styles.image} src={img} alt={name} />
                 <div className={styles.header}>
-                    <img className={styles.image} src={img} alt={name} />
                     <div className={styles.title}>
                         <h2 className={styles.name}>{name}</h2>
                         <p className={styles.username}>{username}</p>
                     </div>
-                    <div className={styles.contacts}>
-                        <a href={`mailto:${email}`} className={styles.email}>
-                            {email}
-                        </a>
-                        <a href={`tel:${phone}`} className={styles.phone}>
-                            {phone}
-                        </a>
-                    </div>
+                </div>
+                <div className={styles.contacts}>
+                    <a href={`mailto:${email}`} className={styles.email}>
+                        {email}
+                    </a>
+                    <a href={`tel:${phone}`} className={styles.phone}>
+                        {phone}
+                    </a>
                 </div>
             </article>
         );
