@@ -29,6 +29,14 @@ class UserCard extends Component {
     }
 }
 
-UserCard.propTypes = {};
+UserCard.propTypes = {
+    name: PropTypes.string.isRequired,
+    gender: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
+    country: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+};
 
 export default UserCard;
