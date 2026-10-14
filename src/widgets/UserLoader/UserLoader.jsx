@@ -111,13 +111,7 @@ class UsersLoader extends Component {
     };
 
     render() {
-        const {
-            users,
-            isFetching,
-            error,
-            gender,
-            resultsInput,
-        } = this.state;
+        const { users, isFetching, error, gender, resultsInput } = this.state;
 
         return (
             <>
@@ -182,7 +176,6 @@ class UsersLoader extends Component {
                                         name={`${u.name.first} ${u.name.last}`}
                                         gender={u.gender}
                                         username={u.login.username}
-                                        country={u.country}
                                         email={u.email}
                                         phone={u.phone}
                                         img={u.picture.large}
