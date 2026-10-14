@@ -8,6 +8,42 @@
         display: flex;
         justify-content: space-between;
 
+        .results {
+            input {
+                width: 3rem;
+                border: 1px solid var(--color-gray);
+                appearance: textfield;
+                -moz-appearance: textfield;
+
+                &::-webkit-inner-spin-button,
+                &::-webkit-outer-spin-button {
+                    margin: 0;
+                    -webkit-appearance: none;
+                }
+            }
+
+            button {
+                padding-inline: 0.5rem;
+                background-color: var(--color-light-10);
+                border: 1px solid var(--color-gray);
+
+                &:first-child {
+                    border-radius: 1rem 0 0 1rem;
+                    padding-left: 1rem;
+                }
+
+                &:last-child {
+                    border-radius: 0 1rem 1rem 0;
+                    padding-right: 1rem;
+                }
+
+                &:hover {
+                    background-color: var(--color-gray);
+                    color: var(--color-light-10);
+                }
+            }
+        }
+
         .genders {
             button {
                 padding-inline: 1rem;
